@@ -7,7 +7,7 @@ class PlainItemSchema(Schema):
     # whereas name,price,store_id will be used in both json payload request and returning these fields
     name = fields.Str(required=True)
     price = fields.Float(required=True)
-    # description = fields.Str(required=False)
+    description = fields.Str(required=False)
 
 
 class PlainStoreSchema(Schema):
