@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 from flask_smorest import Api
 from flask_jwt_extended import JWTManager
-from flask_migrate import Migrate
+from flask_migrate import Migrate, upgrade
 from blocklist import BLOCKLIST
 import os
 from db import db
@@ -95,6 +95,14 @@ def create_app(db_url=None):
     # with app.app_context():
     #     db.create_all()
     #  -- No need after adding migrate
+
+    with app.app_context():
+        try:
+            # Ensure migrations are applied during app startup
+            upgrade()
+        except Exception as e:
+            print(f"Error applying migrations: {e}")
+
 
     api.register_blueprint(ItemBlueprint)
     api.register_blueprint(StoreBlueprint)
