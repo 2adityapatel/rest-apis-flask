@@ -3,9 +3,9 @@ from flask_smorest import Api
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate, upgrade
 from dotenv import load_dotenv
+import os
 
 from blocklist import BLOCKLIST
-import os
 from db import db
 import models
 
