@@ -49,6 +49,9 @@ class UserSchema(Schema):
     username = fields.Str(required=True)
     password = fields.Str(required=True, load_only=True)
 
+class UserRegisterSchema(UserSchema):
+    email = fields.Str(required=True)
+
 # From documentation
 # dump_only – If True skip this field during deserialization, 
 # otherwise its value will be present in the deserialized object. 
